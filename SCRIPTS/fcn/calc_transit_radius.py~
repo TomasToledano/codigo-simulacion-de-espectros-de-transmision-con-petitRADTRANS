@@ -1,0 +1,165 @@
+from config import utils, np, cst, plt
+
+def calc_transit_radius(modo, aerosol, mass_fractions, atmosphere, params_basic, params_planet):
+    """
+    Calcula el radio de tránsito a partir del objeto prt guardado en atmosphere usando la función calculate_transit_radii de prt.
+
+    Args: params_basic, params_planet, params_prt, mass_fractions, atmosphere
+
+    Return: Devuelve la longitud de onda en amstrongs y el radio de tránsito en cm
+    """
+
+      
+    #calculo la mean molar mass ahora, antes la tenia en get params pero cambia si es fastchem o fichero asi aqui mejor
+    mean_molar_masses = utils.compute_mean_molar_masses(mass_fractions)
+    print(mean_molar_masses)
+    
+    if aerosol == 'no':
+
+        wavelengths_cm, radio_transito_cm, _ = atmosphere.calculate_transit_radii(
+            temperatures = params_basic.temperatures_K,
+            mass_fractions = mass_fractions,
+            mean_molar_masses = mean_molar_masses,
+            reference_gravity = params_planet.reference_gravity_cgs,
+            planet_radius = params_planet.planet_radius_cm,
+            reference_pressure = params_planet.reference_pressure_bar,
+            return_contribution=False
+            )
+        
+        delta_ppm = 5012
+               
+        depth_ppm = np.array(delta_ppm * ((radio_transito_cm**2 / params_planet.planet_radius_cm**2) - 1))
+
+        return wavelengths_cm, radio_transito_cm, depth_ppm
+
+    elif aerosol == 'si':
+
+
+        # --- Parámetros que puedes ajustar ---
+        r0 = 14e-2  # tamaño de referencia en micras (por ejemplo, 1.0 µm)
+        P0 = 1.0  # presión de referencia en bar (por ejemplo, 1 bar)
+        alpha = 0.3  # exponente de presión
+        T0 = 225.0  # temperatura de referencia en Kelvin (por ejemplo, 300 K)
+        beta = 0.5   # exponente de temperatura
+
+        # --- Cálculo del radio efectivo ---
+        r_efff = r0 * (params_basic.pressures_bar / P0)**alpha * (params_basic.temperatures_K / T0)**beta  # resultado en micras
+
+        #print(f'r_eff:{r_efff}')
+        mean_radii_h2o_s = np.array([
+            2.3296804e-03, 2.7932188e-03, 3.0494606e-03, 3.5961150e-03,
+            3.9460346e-03, 4.2228447e-03, 3.5692560e-03, 3.5744713e-03,
+            3.3707874e-03, 3.1674732e-03, 3.0264908e-03, 2.9129068e-03,
+            2.7893540e-03, 2.6572203e-03, 2.5109955e-03, 2.3606600e-03,
+            2.3133429e-03, 2.2624865e-03, 2.1371822e-03, 1.7648542e-03,
+            1.3146558e-03, 9.8118370e-04, 7.4707656e-04, 5.9339080e-04,
+            4.9862475e-04, 4.4006267e-04, 3.9791990e-04, 3.6441941e-04,
+            3.3657832e-04, 3.1146690e-04, 2.9022646e-04, 2.5984235e-04,
+            np.nan,       np.nan,       np.nan,       np.nan,
+            np.nan,       np.nan,       np.nan,       np.nan,
+            np.nan
+        ], dtype=np.float32)
+
+
+
+
+
+        mean_radii_h2o_s_clean = np.nan_to_num(mean_radii_h2o_s, nan=1e-4)
+        #mean_radii_h2o_l_clean = np.nan_to_num(mean_radii_h2o_l, nan=1e-4)
+        mean_radii_h2o_l_clean = (1.4e-5) * np.ones_like(params_basic.temperatures_K)
+
+        cloud_particles_mean_radii = {
+            'H2O(l)': mean_radii_h2o_l_clean,
+            'H2O(s)_crystalline__Mie': mean_radii_h2o_s_clean
+        }
+
+
+        
+
+        
+        cloud_particles_mean_radii = {'H2O(l)':  (1.4e-3) * np.ones_like(params_basic.temperatures_K), 'H2O(s)_crystalline__Mie': (1.4e-2) * np.ones_like(params_basic.temperatures_K)}
+
+        #cloud_particles_mean_radii = {'H2O(l)':  (1.4e-3) * np.ones_like(params_basic.temperatures_K)}
+
+        #cloud_particles_mean_radii = {'H2O(s)_crystalline__Mie': (1.4e-1) * np.ones_like(params_basic.temperatures_K)}
+        
+        #cloud_particles_mean_radii = {'H2O(l)': (14e-4) * np.ones_like(params_basic.temperatures_K), 'H2O(s)_crystalline__Mie': r_efff}
+        
+        #plt.plot(r_efff,params_basic.pressures_bar)
+        #plt.gca().invert_yaxis()
+        #plt.yscale('log')
+        #plt.show()
+        #print(cloud_particles_mean_radii)
+        #print(mass_fractions)
+        
+        cloud_particle_radius_distribution_std = 1.05
+
+        #eddy_diffusion_coefficients = np.ones_like(params_basic.temperatures_K) * 10 ** 7.5
+        #cloud_f_sed = {
+        #    'H2O(l)': 2.0,
+        #    'H2O(s)_crystalline__Mie': 3.0
+        #}
+
+
+        wavelengths_cm, radio_transito_cm, _ = atmosphere.calculate_transit_radii(
+            temperatures = params_basic.temperatures_K,
+            mass_fractions = mass_fractions,
+            mean_molar_masses = mean_molar_masses,
+            reference_gravity = params_planet.reference_gravity_cgs,
+            planet_radius = params_planet.planet_radius_cm,
+            reference_pressure = params_planet.reference_pressure_bar,
+            cloud_particles_mean_radii = cloud_particles_mean_radii,
+            cloud_particle_radius_distribution_std = cloud_particle_radius_distribution_std
+            #eddy_diffusion_coefficients=eddy_diffusion_coefficients,
+            #cloud_f_sed=cloud_f_sed
+            )
+
+        delta_ppm = 5012
+               
+        depth_ppm = np.array(delta_ppm * ((radio_transito_cm**2 / params_planet.planet_radius_cm**2) - 1))
+
+        return wavelengths_cm, radio_transito_cm, depth_ppm
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+'''
+r_eff = [3 / (4 · π · ρ_liq · N) · q_cloud]^(1/3)
+q_cloud= razon de mazcla (kg de agua por kg de aire seco
+ρ_liq= densidad del agua 1000kg/m3
+N=numero de particulas de nube por u de volumen
+
+densidad_agua_l = 1000
+q_cloud = 1e-4
+N = 6e4
+r_eff = ((3 * q_cloud) / (4 * 3.1416 * densidad_agua_l * N))**(1/3)
+print(f'El radio efectivo es: {r_eff}')
+'''
