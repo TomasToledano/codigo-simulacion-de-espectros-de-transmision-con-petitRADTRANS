@@ -1,7 +1,0 @@
-
-	RESUMEN ACTUALIZACIONES scripts_Tomas_20250314
-
-- Se ha actualizado el main (cambios pequeños)
-- Se ha modificado el script plot_master, entre otras cosas se han incluido la importación de los parametros del main (con get_params)
-- Se ha añadido la variable case_label para no usar repetidamente 'caso'
-- He incluido la altura en km en los espectros

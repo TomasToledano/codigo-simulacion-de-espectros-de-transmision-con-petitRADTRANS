@@ -1,8 +1,0 @@
-from config import plt
-
-def get_perfil_pt(params_basic, mass_fractions):
-    plt.plot(mass_fractions, params_basic.pressures_bar)
-    plt.gca().invert_yaxis()
-    plt.xlabel('T (K)')
-    plt.ylabel('P (bar)')
-    plt.show()
