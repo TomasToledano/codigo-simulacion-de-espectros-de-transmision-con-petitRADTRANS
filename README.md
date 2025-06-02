@@ -80,5 +80,5 @@ Guía con instalación, tutorial y fragmentos de código de petitRADTRANS:	https
 petitRADTRANS: https://gitlab.com/mauricemolli/petitRADTRANS
 FastChem: https://github.com/NewStrangeWorlds/FastChem
 
-También se han consultado para realizar los códigos páginas como https://stackoverflow.com/ y herramientas de IA para consultas puntuales (OpenAI, 2023) siendo el autor respponsable de todas la implementaciones finales.
+También se han consultado para realizar los códigos páginas como https://stackoverflow.com/ y herramientas de IA para consultas puntuales (OpenAI, 2023) siendo el autor de este código el responsable de todas la implementaciones finales.
 
