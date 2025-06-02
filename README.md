@@ -1,4 +1,4 @@
-#Código de espectros de transmisión para desarrollo del TFM: Simulación de espectros de transmisión de atmósferas de planetas rocosos
+# Código de espectros de transmisión para desarrollo del TFM: Simulación de espectros de transmisión de atmósferas de planetas rocosos
 
 **Autor**: Tomás Toledano Mazarío (tomastol@ucm.es)  
 
@@ -11,19 +11,19 @@ Este repositorio contiene scripts en Python para generar espectros de transmisi�
 
 
 > Estructura principal del repositorio
-
+```
 .
-├── data_input/				# Archivos de datos de entrada
+├── data_input/                         # Archivos de datos de entrada
 │   ├── lineplot_sn_2_120_2_108.fits    # Archivo FITS extraidos de la Calculadora de Tiempo de exposición del JWST
 │   ├── lineplot_sn_4_40_2_59.fits      # Archivo FITS extraidos de la Calculadora de Tiempo de exposición del JWST
 │   └── vertical_profiles_termin_avg_*  # Perfiles verticales atmosféricos de cada escenario (Ben1, Ben2, Hab)
 │   └── Nota: Aquí se genera la carpeta con las tablas de opacidades automaticamente la primera vez que se ejecuta el código.
 │
-├── MODELOS/				# Modelos utilizados en el trabajo
+├── MODELOS/                            # Modelos utilizados en el trabajo
 │   ├── FastChem/                 	# Carpeta con FastChem (mirar (4) para su instalación)
 │   └── petitRADTRANS/            	# Carpeta con petitRADTRANS (mirar (3) para su instalación)
 │
-├── SCRIPTS/			        # Scripts principales de Python
+├── SCRIPTS/                            # Scripts principales de Python
 │   ├── fcn/                            # Funciones 
 │   ├── figures/            	        # Figuras generadas con plot_master.py
 │   ├── output_data/            	# Datos de salida para generar gráficos con la función plot_master.py
@@ -31,7 +31,8 @@ Este repositorio contiene scripts en Python para generar espectros de transmisi�
 │   ├── main.py                   	# Script principal
 │   └── plot_master.py            	# Script maestro para generar gráficos enriquecidos
 │
-└── README.md				# Este archivo 
+└── README.md                           # Este archivo
+```
 
 
 
