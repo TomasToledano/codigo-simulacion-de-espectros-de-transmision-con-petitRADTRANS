@@ -26,7 +26,7 @@ from get_output_params import params_ben1_fichero, params_ben1_fastchem, params_
 ###########################################################################################
 ###########################################################################################
 
-caso = 'hab1'
+caso = 'ben1'
 #caso = 'ben2'
 modo = 'fichero'
 #modo = 'fastchem'
