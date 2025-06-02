@@ -1,21 +1,17 @@
-
-====================
-#**Código de espectros de transmisión para desarrollo del TFM: Simulación de espectros de transmisión de atmósferas de planetas rocosos**
+#Código de espectros de transmisión para desarrollo del TFM: Simulación de espectros de transmisión de atmósferas de planetas rocosos
 
 **Autor**: Tomás Toledano Mazarío (tomastol@ucm.es)  
-====================
 
 
 
 > Descripción general
-====================
+
 Este repositorio contiene scripts en Python para generar espectros de transmisión exoplanetarios utilizando el código de transporte radiativo petitRADTRANS. También se utiliza FastChem para los cálculos de equilibrio químico. El código está diseñado como una herramienta para facilitar el modelado atmosférico en investigación de exoplanetas.
-====================
 
 
 
 > Estructura principal del repositorio
-===================
+
 .
 ├── data_input/				# Archivos de datos de entrada
 │   ├── lineplot_sn_2_120_2_108.fits    # Archivo FITS extraidos de la Calculadora de Tiempo de exposición del JWST
@@ -36,12 +32,11 @@ Este repositorio contiene scripts en Python para generar espectros de transmisi�
 │   └── plot_master.py            	# Script maestro para generar gráficos enriquecidos
 │
 └── README.md				# Este archivo 
-====================
 
 
 
 > Instalar dependencias y modelos
-====================
+
 1) descargar dependencias:
 	> Las dependencias como numpy y matplotlib se instalan automaticamente al instalar petitRADTRANS (paso 3). NOTA: prt te cambia numpy a una versión inferior.
 	>> sudo dnf install python3 python3-pip gcc-gfortran chromium 
@@ -65,12 +60,11 @@ Este repositorio contiene scripts en Python para generar espectros de transmisi�
 	5) mkdir build && cd build  						# Creo carpeta para compilar FastChem, ya que está escrito en C++
 	6) cmake ..
 	7) pip install pyfastchem						#instalar librería
-====================
 
 
 
 > Referencias
-====================
+
 Mollière, P., Wardenier, J. P., van Boekel, R., Henning, T., Molaverdikhani, K., & Snellen, I. A. G. (2019). *petitRADTRANS: A Python radiative transfer package for exoplanet characterization*. Astronomy & Astrophysics, 627, A67.  
 https://doi.org/10.1051/0004-6361/201834696
 
@@ -82,8 +76,8 @@ https://jwst.etc.stsci.edu/
 
 Guía con instalación, tutorial y fragmentos de código de petitRADTRANS:	https://petitradtrans.readthedocs.io/en/latest/index.html
 
-- petitRADTRANS: https://gitlab.com/mauricemolli/petitRADTRANS
-- FastChem: https://github.com/NewStrangeWorlds/FastChem
+petitRADTRANS: https://gitlab.com/mauricemolli/petitRADTRANS
+FastChem: https://github.com/NewStrangeWorlds/FastChem
 
 También se han consultado para realizar los códigos páginas como https://stackoverflow.com/ y herramientas de IA para consultas puntuales (OpenAI, 2023) siendo el autor respponsable de todas la implementaciones finales.
-====================
+
