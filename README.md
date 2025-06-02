@@ -6,7 +6,7 @@
 
 > Descripción general
 
-Este repositorio contiene scripts en Python para generar espectros de transmisión exoplanetarios utilizando el código de transporte radiativo petitRADTRANS. También se utiliza FastChem para los cálculos de equilibrio químico. El código está diseñado como una herramienta para facilitar el modelado atmosférico en investigación de exoplanetas.
+Este repositorio contiene scripts en Python para generar espectros de transmisión exoplanetarios utilizando el código de transporte radiativo petitRADTRANS. También se utiliza FastChem para los cálculos de equilibrio químico. El código está diseñado como una herramienta para generar todos los espectros o realizar cálculos del TFM.
 
 
 
