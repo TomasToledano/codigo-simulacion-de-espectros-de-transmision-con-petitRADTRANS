@@ -39,23 +39,24 @@ Este repositorio contiene scripts en Python para generar espectros de transmisi�
 > Instalar dependencias y modelos
 
 1) descargar dependencias:
+   
 	> Las dependencias como numpy y matplotlib se instalan automaticamente al instalar petitRADTRANS (paso 3). NOTA: prt te cambia numpy a la versión 1.26.
 	>> sudo dnf install python3 python3-pip gcc-gfortran chromium 
 	#gcc-gfortran es necesario para compilar las opacidades y módulos numéricos de pRT.
 
-2) DENTRO DE MODELOS (CARPETA VACÍA YA CREADA) INSTALO PETITRADTRANS Y FASTCHEM.
-	-> dentro de MODELOS tendré dos carpetas que se crearán al instalar los modelos: FastChem, petitRADTRANS
+3) DENTRO DE MODELOS (CARPETA VACÍA YA CREADA) INSTALO PETITRADTRANS Y FASTCHEM.
+   	1) Dentro de MODELOS tendré dos carpetas que se crearán al instalar los modelos: FastChem, petitRADTRANS
 	
 	
-3) instalacion de petitRADTRANS
+4) instalacion de petitRADTRANS
 	1) git clone https://gitlab.com/mauricemolli/petitRADTRANS.git  	# Dentro de la carpeta MODELOS instalo petitradtrans, es posible que pida antes instalar git-core
 	2) cd petitRADTRANS/ 							# Me meto en la carpeta que se ha creado
-	3) pip install . 							# Dentro de la carpeta utilizo '>>pip install .' para instalar el paquete petitRADTRANS en python; es posible que de error y haya que usar comandos como: >>sudo dnf install python3-devel   >>sudo dnf install pkg-config
+	3) pip install . 							# Dentro de la carpeta utilizo '>>pip install .' para instalar el paquete petitRADTRANS en python;
+	4) es posible que de error y haya que usar comandos como: >>sudo dnf install python3-devel   >>sudo dnf install pkg-config
 
-4) instalacion de fastchem
+5) instalacion de fastchem
 	1) sudo dnf install cmake						# Instalo cmake, necesario para compilar proyectos como Fastchem
 	2) cmake --version  							# Comprobar instalación
-	
 	3) git clone --depth 1 https://github.com/NewStrangeWorlds/FastChem 	# Dentro de la carpeta MODELOS instalo fastchem
 	4) cd FastChem/  							# Me meto en la carpeta que se ha creado
 	5) mkdir build && cd build  						# Creo carpeta para compilar FastChem, ya que está escrito en C++
