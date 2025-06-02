@@ -19,7 +19,7 @@ Este repositorio contiene scripts en Python para generar espectros de transmisi�
 │   └── vertical_profiles_termin_avg_*  # Perfiles verticales atmosféricos de cada escenario (Ben1, Ben2, Hab)
 │   └── Nota: Aquí se genera la carpeta con las tablas de opacidades automaticamente la primera vez que se ejecuta el código.
 │
-├── MODELOS/                            # Modelos utilizados en el trabajo
+├── MODELOS/                            # Modelos utilizados en el trabajo (HAY QUE CREAR ESTA CARPETA)
 │   ├── FastChem/                 	# Carpeta con FastChem (mirar (4) para su instalación)
 │   └── petitRADTRANS/            	# Carpeta con petitRADTRANS (mirar (3) para su instalación)
 │
@@ -43,7 +43,7 @@ Este repositorio contiene scripts en Python para generar espectros de transmisi�
 	>> sudo dnf install python3 python3-pip gcc-gfortran chromium 
 	#gcc-gfortran es necesario para compilar las opacidades y módulos numéricos de pRT.
 
-2) crear directorio MODELOS, TIENE QUE ESTAR DENTRO DE LA 'carpeta_principal' que contenga todas las carpetas SIGUIENDO LA JERARQUÍA previamente mostrada en 'Estructura del repositorio'.
+2) CREAR DIRECTORIO MODELOS (mkdir MODELOS), TIENE QUE ESTAR DENTRO DE LA 'carpeta_principal' DONDE SE HAYA CLONADO EL GITHUB SIGUIENDO LA JERARQUÍA previamente mostrada en 'Estructura del repositorio'.
 	-> dentro de MODELOS tendré dos carpetas que se crearán al instalar los modelos: FastChem, petitRADTRANS
 	
 	
