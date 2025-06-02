@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wall -pedantic -MMD -O3 -DNDEBUG CMakeFiles/fastchem.dir/model_src/model_main.cpp.o -o /home/Tomas/tfm_prt/FastChem/fastchem  libfastchem_lib.a libfastchem_lib.a /usr/lib/gcc/x86_64-redhat-linux/11/libgomp.so /usr/lib64/libpthread.a 

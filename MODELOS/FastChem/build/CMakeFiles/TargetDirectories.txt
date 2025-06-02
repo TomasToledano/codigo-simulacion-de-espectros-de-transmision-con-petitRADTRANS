@@ -1,4 +1,0 @@
-/home/Tomas/tfm_prt/FastChem/build/CMakeFiles/fastchem_lib.dir
-/home/Tomas/tfm_prt/FastChem/build/CMakeFiles/fastchem.dir
-/home/Tomas/tfm_prt/FastChem/build/CMakeFiles/edit_cache.dir
-/home/Tomas/tfm_prt/FastChem/build/CMakeFiles/rebuild_cache.dir
